@@ -41,7 +41,7 @@ router.post("/upload", authMiddleware, upload.single('profilePic'), async (req, 
     }
     
     // Create the URL for the uploaded file
-    const fileUrl = `http://localhost:8080/uploads/${req.file.filename}`;
+    const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
     
     // Update the user's profilePic field
     const updatedUser = await User.findByIdAndUpdate(
