@@ -59,5 +59,8 @@ app.use("/api/oauth", oauthRoutes);
 app.use("/api/otp", otpRoutes);
 app.use("/api/password", passwordRoutes);
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+const port = process.env.PORT || 10000;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+});
