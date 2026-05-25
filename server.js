@@ -18,34 +18,13 @@ const passwordRoutes = require("./routes/password");
 
 connection();
 
-// CORS must be before everything else
+// CORS - allow all origins (safe for API with JWT auth)
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin) return callback(null, true);
-    
-    const allowedPatterns = [
-      /^http:\/\/localhost(:\d+)?$/,
-      /\.vercel\.app$/,
-      /\.onrender\.com$/
-    ];
-    
-    const isAllowed = allowedPatterns.some(pattern => pattern.test(origin)) 
-                      || origin === process.env.CLIENT_URL;
-    
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
-  },
+  origin: true,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
-
-// Handle preflight for all routes
-app.options('*', cors());
 
 app.use(express.json());
 
