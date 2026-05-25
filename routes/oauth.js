@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("../config/passport");
 
-const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
+const CLIENT_URL = process.env.CLIENT_URL || process.env.CLIENT_URI || "http://localhost:5173";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const sendTokenRedirect = (res, user) => {
