@@ -16,6 +16,7 @@ const profileRoutes = require("./routes/profile");
 const oauthRoutes = require("./routes/oauth");
 const otpRoutes = require("./routes/otp");
 const passwordRoutes = require("./routes/password");
+const gfgRoutes = require("./routes/gfg");
 
 connection();
 
@@ -59,6 +60,7 @@ app.use("/api/profile", profileRoutes);
 app.use("/api/oauth", oauthRoutes);
 app.use("/api/otp", otpRoutes);
 app.use("/api/password", passwordRoutes);
+app.use("/api/gfg", gfgRoutes);
 
 const port = process.env.PORT || 10000;
 app.listen(port, '0.0.0.0', () => {
